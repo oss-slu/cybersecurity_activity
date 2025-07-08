@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift Left Security Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .demo-area {
+            position: relative;
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .command-examples {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .command-examples .comment {
+            color: #6a9955;
+        }
+        
+        .command-examples .command {
+            color: #569cd6;
+        }
+        
+        .vulnerability-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .vulnerability-info h4 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .security-tips {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .security-tips h4 {
+            color: #0c5460;
+            margin-top: 0;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+            color: #6c757d;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 Shift Left Security Demo</h1>
+            <p>Interactive Software Supply Chain Security Visualization</p>
+        </div>
+        
+        <div class="instructions">
+            <h3>🎯 Activity Instructions</h3>
+            <p>This visualization demonstrates how security vulnerabilities hide in software dependencies. Follow these steps to explore supply chain security:</p>
+            
+            <ol>
+                <li><strong>Observe the network:</strong> Each circle represents a software package your project depends on</li>
+                <li><strong>Run Security Scan:</strong> Click the blue button to simulate <code>npm audit</code></li>
+                <li><strong>Analyze Results:</strong> Red/orange circles show vulnerable packages</li>
+                <li><strong>Toggle View:</strong> Hide/show vulnerabilities to see the difference</li>
+            </ol>
+            
+            <div class="vulnerability-info">
+                <h4>⚠️ Vulnerable Packages in This Demo</h4>
+                <p>This demo includes intentionally outdated packages with known vulnerabilities:</p>
+                <ul>
+                    <li><strong>axios v0.21.1</strong> - Critical: Server-Side Request Forgery</li>
+                    <li><strong>lodash v4.17.20</strong> - High: Prototype Pollution</li>
+                    <li><strong>moment v2.29.1</strong> - High: Regular Expression Denial of Service</li>
+                    <li><strong>express v4.17.1</strong> - Moderate: Various middleware vulnerabilities</li>
+                </ul>
+            </div>
+            
+            <div class="command-examples">
+<span class="comment"># Commands to try in your terminal:</span>
+<span class="command">npm audit</span>                    <span class="comment"># Scan for vulnerabilities</span>
+<span class="command">npm audit fix</span>               <span class="comment"># Automatically fix issues</span>
+<span class="command">npm list --depth=2</span>         <span class="comment"># Show dependency tree</span>
+<span class="command">npm why axios</span>              <span class="comment"># See why a package is installed</span>
+<span class="command">npm outdated</span>               <span class="comment"># Check for updates</span>
+            </div>
+            
+            <div class="security-tips">
+                <h4>🛡️ Security Best Practices</h4>
+                <ul>
+                    <li>Run <code>npm audit</code> regularly in your projects</li>
+                    <li>Keep dependencies updated, especially security patches</li>
+                    <li>Review what packages you're adding to your project</li>
+                    <li>Use automated tools like Dependabot for monitoring</li>
+                    <li>Understand that every dependency is code you're trusting</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="demo-area">
+            <!-- p5.js sketch will be embedded here -->
+            <div id="sketch-container"></div>
+        </div>
+        
+        <div class="footer">
+            <p>
+                <strong>Learning Goals:</strong> Understand software supply chain risks • 
+                Use security scanning tools • Practice vulnerability remediation • 
+                Implement "shift left" security practices
+            </p>
+            <p>
+                <a href="https://docs.npmjs.com/cli/v8/commands/npm-audit" class="btn btn-primary" target="_blank">npm audit docs</a>
+                <a href="https://github.com/advisories" class="btn btn-danger" target="_blank">GitHub Advisories</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Load p5.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    
+    <!-- Load our sketch -->
+    <script src="sketch.js"></script>
+    
+    <script>
+        // Embed the p5.js sketch in the container
+        function setup() {
+            let canvas = createCanvas(1000, 700);
+            canvas.parent('sketch-container');
+            
+            // Continue with the rest of setup from sketch.js
+            initializeDependencies();
+            
+            // Create UI elements positioned relative to canvas
+            scanButton = createButton('Run Security Scan');
+            scanButton.parent('sketch-container');
+            scanButton.position(20, 20);
+            scanButton.mousePressed(runSecurityScan);
+            scanButton.addClass('btn btn-primary');
+            
+            toggleButton = createButton('Toggle Vulnerabilities');
+            toggleButton.parent('sketch-container');
+            toggleButton.position(200, 20);
+            toggleButton.mousePressed(toggleVulnerabilities);
+            toggleButton.addClass('btn btn-danger');
+            
+            // Count initial stats
+            totalDependencies = depData.length;
+            vulnerabilityCount = depData.filter(dep => dep.vulnerable).length;
+        }
+    </script>
+</body>
+</html>
