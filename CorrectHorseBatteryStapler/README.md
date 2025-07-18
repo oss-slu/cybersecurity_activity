@@ -122,3 +122,6 @@ https://xkcd.com/936/
 - Create animated "hacking" simulation
 - Add sound effects for different strength levels
 - Build a password manager interface concept
+## conclusion
+- thi is the last part of the code
+-see you again
