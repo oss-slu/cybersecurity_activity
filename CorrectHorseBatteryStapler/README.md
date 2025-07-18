@@ -122,6 +122,8 @@ https://xkcd.com/936/
 - Create animated "hacking" simulation
 - Add sound effects for different strength levels
 - Build a password manager interface concept
+
 ## conclusion
-- thi is the last part of the code
--see you again
+- The activity is designed to last around 45-60 minutes, with a clear structure and progression from   contributor and reviewer
+- ths is the last part of the code
+- see you again
